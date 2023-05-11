@@ -1,0 +1,39 @@
+services:
+  # service name that we will be able to use to refer to instead of localhost
+  # we will use it in pgadmin
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=postgres
+    # mapped volume on local machine (where data will be stored) to a volume in a container
+    volumes:
+      - "${HOME}/docker/volumes/postgres:/var/lib/postgresql/data"
+    # port mapping localhostmachine:container
+    ports:
+      - "5432:5432"
+    # Add container name so that Docker doesn't add current folder prefix to service name
+    container_name: postgres
+    # Specify network on which this container should work on
+    networks:
+      - pgnetwork
+
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.org
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    volumes:
+      - "${HOME}/docker/volumes/pgadmin:/var/lib/pgadmin"
+    ports:
+      - "8080:80"
+    container_name: pgadmin
+    networks:
+      - pgnetwork
+# Specify a network name instead of using project_name_default name
+networks:
+  pgnetwork:
+    name: pgnetwork
