@@ -1,0 +1,1 @@
+docker run -d --name cassandra-docker -p 9042:9042 -v "${HOME}/docker/volumes/cassandra:/var/lib/cassandra" cassandra
