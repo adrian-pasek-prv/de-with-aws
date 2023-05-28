@@ -1,0 +1,12 @@
+{
+  "cluster_endpoint": {
+    "sensitive": false,
+    "type": "string",
+    "value": "redshift-cluster.cspf33xnqwsx.eu-central-1.redshift.amazonaws.com:5439"
+  },
+  "redshift_iam_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:iam::310922574952:role/redshift-role"
+  }
+}
