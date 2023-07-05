@@ -1,6 +1,7 @@
 # Create S3 bucket
 resource "aws_s3_bucket" "s3_bucket" {
   bucket = "s3-5234624-emr-cluster"
+  force_destroy = true
 }
 
 # Set access control of bucket to private
