@@ -8,6 +8,8 @@ resource "aws_emr_cluster" "cluster" {
     emr_managed_master_security_group = aws_security_group.emr_security_group.id
     emr_managed_slave_security_group  = aws_security_group.emr_security_group.id
     instance_profile                  = aws_iam_instance_profile.emr_profile.arn
+    # Name of the EC2 key to be associated with this cluster
+    key_name                          = "emr_cluster"
   }
 
   master_instance_group {
