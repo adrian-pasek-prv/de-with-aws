@@ -176,3 +176,6 @@ terraform/terraform.tvars.json
 
 # csvs
 *.csv
+
+# .gz
+*.gz
