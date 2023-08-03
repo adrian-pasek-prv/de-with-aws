@@ -17,9 +17,10 @@ def demo_dag():
     hello_world = hello_world()
     
     @task()
-    def current_time():
+    def current_time(**kwargs):
+        # **kwargs will be populated with Airflow context variables like data_interval_start 
         logging.info(f"Current time is {datetime.datetime.utcnow().isoformat()}")
-        
+        logging.info(f"data_interval_start is set to \"{kwargs['data_interval_start']}\"")
     current_time = current_time()
     
     @task()
