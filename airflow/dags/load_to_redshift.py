@@ -4,7 +4,6 @@ import sys
 
 from airflow.decorators import dag, task
 from airflow.providers.amazon.aws.hooks.base_aws import AwsGenericHook
-from airflow.hooks.postgres_hook import PostgresHook
 from airflow.operators.postgres_operator import PostgresOperator
 
 # Import sql_statements.py
@@ -34,7 +33,7 @@ def redshift_dag():
             
     load_data_to_redshift = load_data_to_redshift()
             
-    location_traffic_task = PostgresSQLOperator(
+    location_traffic_task = PostgresOperator(
         task_id="location_traffic_task",
         postgres_conn_id="redshift",
         sql=sql_statements.LOCATION_TRAFFIC_SQL
