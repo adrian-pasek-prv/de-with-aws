@@ -182,3 +182,4 @@ terraform/terraform.tvars.json
 
 # logs
 */logs/
+terraform/.terraform.tfstate.lock.info
